@@ -1,1 +1,31 @@
-<p>promociones works!</p>
+<section class="px-6 py-12 min-h-screen">
+    <h2 class="text-4xl font-extrabold text-center text-pink-600 mb-4 uppercase tracking-wide mb-10">
+        ¡Ofertas Exclusivas para Ti!
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div *ngFor="let item of items"
+            class="relative w-full max-w-xs mx-auto overflow-hidden rounded-lg bg-white shadow-md hover:shadow-lg transition-transform duration-300 transform hover:scale-105 ">
+            <a>
+                <img class="h-60 rounded-t-lg object-cover"
+                    [src]="item.imagen || 'https://cdn-icons-png.flaticon.com/512/1046/1046753.png'"
+                    alt="product image" />
+            </a>
+            <span
+                class="absolute top-0 left-0 w-28 translate-y-4 -translate-x-6 -rotate-45 bg-red-500 text-center text-sm text-white">Promoción</span>
+            <div class="mt-4 px-5 pb-5 bg-[#EBF2F2]">
+
+                <h5 class="text-xl font-semibold tracking-tight text-slate-900 truncate" [title]="item.nombre">
+                    {{ item.nombre }}
+                </h5>
+                <div class="p-5">
+                    <button
+                        class="w-full mt-4 flex items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium text-black hover:bg-gray-300 transition rounded-xl">
+
+                        ${{ (item.precio) | number: '1.2-2' }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

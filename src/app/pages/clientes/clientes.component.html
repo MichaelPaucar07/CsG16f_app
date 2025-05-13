@@ -1,1 +1,30 @@
-<p>clientes works!</p>
+<section class="px-6 py-16 min-h-screen">
+  <div class="max-w-3xl mx-auto text-center mb-12">
+    <h2 class="text-4xl font-extrabold text-gray-800 mb-4">Clientes Registrados</h2>
+    <p class="text-lg text-gray-700">
+      A lo largo de los años, hemos ganado el corazón de nuestros clientes gracias a nuestro compromiso,
+      excelencia y atención. Aquí te presentamos orgullosamente a quienes confían en nosotros.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    <div
+      *ngFor="let cliente of clientes"
+      class="rounded-3xl p-6 bg-white shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl bg-[#EBF2F2] hover:bg-gradient-to-br hover:from-[#EBF2F2] hover:to-[#D0F2E7]"
+    >
+      <div class="flex flex-col items-center">
+        <img
+          src="https://cdn.vectorstock.com/i/1000v/82/68/cosmetic-beauty-logo-design-vector-28158268.jpg"
+          alt="Foto cliente"
+          class="w-24 h-24 object-cover rounded-full shadow border-4 border-white mb-4"
+        />
+        <div class="text-center space-y-1">
+          <h3 class="text-lg font-semibold text-gray-800">{{ cliente.nombre }}</h3>
+          <p class="text-sm text-gray-600"><strong>Correo:</strong> {{ cliente.correo }}</p>
+          <p class="text-sm text-gray-600"><strong>Cédula:</strong> {{ cliente.cedula }}</p>
+          <p class="text-sm text-gray-600"><strong>Teléfono:</strong> {{ cliente.telefono }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

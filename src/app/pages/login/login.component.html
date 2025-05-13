@@ -1,1 +1,53 @@
-<p>login works!</p>
+<div class="flex flex-wrap bg-[#EBF2F2] min-h-screen font-sans">
+    <div class="flex w-full flex-col md:w-1/2">
+        <div class="flex justify-center pt-12 md:-mb-24 md:justify-start md:pl-12">
+            <a href="#" class="border-b-4 border-[#ADE0DB] pb-2 text-2xl font-bold text-[#333]"> COSMETICS STORE . </a>
+        </div>
+        <div class="lg:w-[28rem] mx-auto my-auto flex flex-col justify-center pt-8 md:justify-start md:px-6 md:pt-0">
+            <p class="text-left text-3xl font-bold text-[#333]">Bienvenido</p>
+            <p class="mt-2 text-left text-[#6b7280]">Ingresa tus datos para continuar.</p>
+            <button
+                class="mt-8 flex items-center justify-center rounded-md border border-[#BCEBDF] bg-white px-4 py-2 text-sm text-[#333] shadow-sm transition hover:bg-[#BCEBDF] hover:text-white">
+                <img class="mr-2 h-5" src="https://static.cdnlogo.com/logos/g/35/google-icon.svg" alt /> Iniciar con
+                Google
+            </button>
+            <div class="relative mt-8 flex h-px items-center bg-[#D9DBDB]">
+                <div class="absolute left-1/2 h-6 w-14 -translate-x-1/2 bg-[#EBF2F2] text-center text-sm text-[#999]">o
+                </div>
+            </div>
+            <form class="flex flex-col pt-3 md:pt-8" (ngSubmit)="onSubmit()">
+                <div class="flex flex-col pt-4">
+                    <div class="focus-within:border-b-gray-500 relative flex overflow-hidden border-b-2 transition">
+                        <input type="email" id="login-email" name="email" [(ngModel)]="email"
+                            class="w-full flex-1 bg-white px-4 py-2 text-base text-gray-700 placeholder-gray-400 focus:outline-none"
+                            placeholder="Correo" required />
+                    </div>
+                </div>
+                <div class="mb-12 flex flex-col pt-4">
+                    <div class="focus-within:border-b-gray-500 relative flex overflow-hidden border-b-2 transition">
+                        <input type="password" id="login-password" name="password" [(ngModel)]="password"
+                            class="w-full flex-1 bg-white px-4 py-2 text-base text-gray-700 placeholder-gray-400 focus:outline-none"
+                            placeholder="Contraseña" required />
+                    </div>
+                </div>
+                <button type="submit" [disabled]="loading"
+                    class="w-full rounded-lg bg-[#ADE0DB] px-4 py-2 text-base font-semibold text-black shadow-md transition hover:bg-[#75cbc3]">
+                    {{ loading ? 'Cargando...' : 'Iniciar sesión' }}
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="relative hidden h-screen md:block md:w-1/2">
+        <img class="absolute top-0 z-0 h-full w-full object-cover opacity-90"
+            src="https://wallpapers.com/images/featured/maquillaje-rosa-cx8q2py39wzvz5bc.jpg"
+            alt="cosmetics background" />
+
+        <div class="absolute bottom-0 z-10 px-10 pb-12 text-white">
+            <p class="mb-8 text-3xl font-semibold leading-10 drop-shadow">Creamos belleza sin compromiso técnico.
+                Mientras
+                otros luchan con deuda técnica, tú lanzas productos con estilo.</p>
+            <p class="text-xl font-bold drop-shadow">María D.</p>
+            <p class="opacity-90 text-sm">Fundadora, Damasus Beauty</p>
+        </div>
+    </div>
+</div>
