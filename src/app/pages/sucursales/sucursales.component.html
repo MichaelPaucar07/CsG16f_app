@@ -1,24 +1,38 @@
+<!-- Contenedor principal con fondo gris claro y padding -->
 <div class="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <!-- Título de la sección centrado y estilizado con color rosa -->
     <h2 class="text-3xl font-semibold text-center text-pink-600 mb-10">Nuestras Sucursales</h2>
+    <!-- Filtro de provincia con etiqueta e input select -->
     <div class="mb-8 text-center">
         <label class="block text-sm font-medium text-gray-700 mb-1">Filtrar por provincia:</label>
+        <!-- Selector de provincia enlazado mediante two-way binding (ngModel) -->
         <select [(ngModel)]="provinciaSeleccionada"
             class="border border-gray-300 rounded-md px-4 py-2 text-gray-700 focus:ring-pink-500 focus:border-pink-500">
+            <!-- Opción para ver todas las sucursales -->
             <option value="">Todas</option>
+
+            <!-- Opción generada dinámicamente por cada provincia única -->
             <option *ngFor="let provincia of provinciasUnicas" [value]="provincia">
                 {{ provincia }}
             </option>
         </select>
     </div>
+    <!-- Contenedor de tarjetas de sucursales, en grilla responsiva -->
     <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Tarjeta por cada sucursal filtrada -->
         <div *ngFor="let sucursal of sucursalesFiltradas"
             class="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+            <!-- Imagen destacada de la sucursal -->
             <img [src]="sucursal.imagen" [alt]="sucursal.nombre" class="w-full h-48 object-cover" />
+            <!-- Contenido textual de la tarjeta -->
             <div class="p-5 text-center">
+                <!-- Nombre de la sucursal -->
                 <h3 class="text-lg font-bold text-gray-800">{{ sucursal.nombre }}</h3>
+                <!-- Dirección física -->
                 <p class="text-sm text-gray-600 mt-2">{{ sucursal.direccion }}</p>
+                <!-- Ciudad y provincia -->
                 <p class="text-sm text-gray-500">{{ sucursal.ciudad }}, {{ sucursal.provincia }}</p>
-
+                <!-- Botón que abre Google Maps con la dirección seleccionada -->
                 <button (click)="abrirEnGoogleMaps(sucursal.direccion, sucursal.ciudad)"
                     class="mt-4 inline-block text-pink-600 border border-pink-600 px-4 py-1 rounded-full text-sm hover:bg-pink-600 hover:text-white transition">
                     Ver en Mapa

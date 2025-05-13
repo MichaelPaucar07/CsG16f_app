@@ -1,21 +1,52 @@
-<section class="px-6 py-14">
-    <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-12 tracking-tight">Nuestro Equipo</h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 ">
-        <div *ngFor="let emp of empleados"
-            class="relative overflow-hidden bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 group bg-[#EBF2F2]">
-            <div class="flex items-center gap-6">
-                <div class="relative">
-                    <img [src]="emp.imagen" [alt]="emp.nombre"
-                        class="w-24 h-24 rounded-full object-cover  shadow-md ring-2 ring-[#D0F2E7] transition-transform duration-300 group-hover:scale-105" />
-                </div>
-                <div>
-                    <h3
-                        class="text-2xl font-semibold text-gray-800 group-hover:text-[#008080] transition-colors duration-300">
-                        {{ emp.nombre }}</h3>
-                    <p class="text-sm text-black">{{ emp.puesto }}</p>
-                    <span class="text-xs font-medium text-black mt-1 inline-block">{{ emp.tipo_trabajador }}</span><br>
-                    <span class="text-xs font-medium text-black mt-1 inline-block">{{ emp.correo }}</span>
+<!-- Sección principal con fondo blanco -->
+<section class="bg-white">
+    <!-- Contenedor centrado con padding interno -->
+    <div class="container px-6 py-10 mx-auto">
+        <!-- Título principal centrado -->
+        <h1 class="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl">
+            Nuestro equipo de trabajo
+        </h1>
+        <!-- Descripción general del equipo, centrada -->
+        <p class="max-w-2xl mx-auto my-6 text-center text-gray-700">
+            En Cosmetic Store contamos con un equipo de trabajo compuesto por 15 profesionales altamente capacitados y
+            comprometidos con ofrecer una experiencia excepcional en el mundo de la cosmética y el cuidado personal.
+            Cada integrante aporta su experiencia y talento en distintas áreas clave que nos permiten operar con
+            eficiencia, innovación y enfoque en el cliente.
+        </p>
+        <!-- Grid de tarjetas: 1 columna en móvil, 2 en tablet, 4 en escritorio -->
+        <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-4">
+            <!-- Tarjeta de cada empleado, generada dinámicamente con *ngFor -->
+            <div class="relative flex flex-col items-center p-8 transition-all duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-gray-100 hover:scale-105"
+                *ngFor="let emp of empleados">
+                <!-- Imagen del empleado con borde decorativo -->
+                <img class="object-cover w-32 h-32 rounded-full ring-4 ring-[#ADE0DB]" [src]="emp.imagen" alt="">
+                <!-- Nombre del empleado -->
+                <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize">{{ emp.nombre }}</h1>
+                <!-- Puesto o cargo del empleado -->
+                <p class="mt-2 text-gray-700">{{ emp.puesto }}</p>
+                <!-- Tipo de trabajador (tiempo completo, externo, etc.) -->
+                <p class="mt-2 text-gray-500 text-sm">{{ emp.tipo_trabajador }}</p>
+                <p class="mt-2 text-black text-sm p-2 rounded-full bg-white">Código de empleado: {{ emp.codigo_empleado }}</p>
+                <!-- Botón para enviar correo con ícono y animación al hacer hover -->
+                <div class="flex mt-5 -mx-2 relative">
+                    <a href="mailto:{{ emp.correo }}" title="{{ emp.correo }}"
+                        class="flex items-center justify-center w-10 h-10 text-gray-600 transition-all duration-300 ease-in-out bg-white border border-gray-300 rounded-full hover:text-white hover:bg-[#ADE0DB] group-hover:w-40 group-hover:rounded-full group-hover:bg-[#ADE0DB] group-hover:text-white group-hover:shadow-xl overflow-hidden"
+                        aria-label="Enviar correo">
+                        <!-- Ícono de sobre (email) -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                            color="#000000" fill="none">
+                            <path d="M2 6L8.91302 9.91697C11.4616 11.361 12.5384 11.361 15.087 9.91697L22 6"
+                                stroke="#000000" strokeWidth="1.5" strokeLinejoin="round"></path>
+                            <path
+                                d="M2.01577 13.4756C2.08114 16.5412 2.11383 18.0739 3.24496 19.2094C4.37608 20.3448 5.95033 20.3843 9.09883 20.4634C11.0393 20.5122 12.9607 20.5122 14.9012 20.4634C18.0497 20.3843 19.6239 20.3448 20.7551 19.2094C21.8862 18.0739 21.9189 16.5412 21.9842 13.4756C22.0053 12.4899 22.0053 11.5101 21.9842 10.5244C21.9189 7.45886 21.8862 5.92609 20.7551 4.79066C19.6239 3.65523 18.0497 3.61568 14.9012 3.53657C12.9607 3.48781 11.0393 3.48781 9.09882 3.53656C5.95033 3.61566 4.37608 3.65521 3.24495 4.79065C2.11382 5.92608 2.08114 7.45885 2.01576 10.5244C1.99474 11.5101 1.99475 12.4899 2.01577 13.4756Z"
+                                stroke="#000000" strokeWidth="1.5" strokeLinejoin="round"></path>
+                        </svg>
+                        <!-- Texto que aparece solo al hacer hover (efecto expandible) -->
+                        <span
+                            class="hidden ml-2 text-sm font-medium transition-opacity duration-300 group-hover:inline">
+                            Contactar
+                        </span>
+                    </a>
                 </div>
             </div>
         </div>

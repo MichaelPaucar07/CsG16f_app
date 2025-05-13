@@ -10,13 +10,18 @@ import { CommonModule } from '@angular/common';
   styleUrl: './clientes.component.css'
 })
 export class ClientesComponent {
-clientes: any[] = [];
+  // Variable que almacenará la lista de clientes obtenida del servicio
+  clientes: any[] = [];
 
-constructor(private clienteService: ClienteService) {}
+  // Inyectamos el servicio ClienteService para poder consumir su método getClientes()
+  constructor(private clienteService: ClienteService) { }
 
-ngOnInit() {
-  this.clienteService.getClientes().subscribe(data => {
-    this.clientes = data;
-  });
-}
+  // ngOnInit se ejecuta automáticamente cuando el componente se carga
+  ngOnInit() {
+    // Se llama al servicio para obtener los datos de clientes
+    this.clienteService.getClientes().subscribe(data => {
+      // Se asigna la respuesta al arreglo 'clientes' para ser usado en el HTML
+      this.clientes = data;
+    });
+  }
 }
